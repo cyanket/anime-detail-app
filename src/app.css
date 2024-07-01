@@ -1,0 +1,57 @@
+.modal {
+  scrollbar-width: none;
+}
+
+.modal-dialog {
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+.modal-content {
+  border-radius: 0 !important;
+}
+
+.modal-body {
+  padding: 0 !important;
+}
+
+.logo-img {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.in-app {
+  text-align: right;
+}
+
+.refresh-button {
+  background-color: #c7c7c7bd;
+  color: #0000ffcc;
+  font-weight: 700;
+  border: none;
+}
+
+.refresh-button:hover, .refresh-button:active {
+  background-color: #979797c0 !important;
+  color: #0000ffcc !important;
+  font-weight: 700;
+  border: none;
+}
+
+.in-app-text {
+  font-size: 10px;
+  text-align: center;
+}
+
+.anime-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.anime-subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #686868;
+}
