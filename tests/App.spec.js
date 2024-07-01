@@ -1,13 +1,11 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import BootstrapVue from 'bootstrap-vue';
 import App from '../src/App.vue';
 import MainContentCardComponent from '@/components/MainContentCardComponent.vue';
 import ExpandedViewComponent from '@/components/ExpandedViewComponent.vue';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
-localVue.use(BootstrapVue);
 
 describe('App.vue', () => {
   let actions;
@@ -27,8 +25,8 @@ describe('App.vue', () => {
     };
 
     actions = {
-      getToken: sinon.stub().resolves(),
-      getAnimeContent: sinon.stub().resolves()
+      getToken: jest.fn(),
+      getAnimeContent: jest.fn()
     };
 
     store = new Vuex.Store({
@@ -42,39 +40,39 @@ describe('App.vue', () => {
     const date = new Date();
     const options = { weekday: 'long', day: 'numeric', month: 'long' };
     const expectedDate = date.toLocaleDateString('en-GB', options).toUpperCase();
-    expect(wrapper.find('.current-date').text()).to.equal(expectedDate);
+    expect(wrapper.find('.current-date').text()).toBe(expectedDate);
   });
 
   it('renders MainContentCardComponent when animeContent is available', () => {
     const wrapper = shallowMount(App, { store, localVue });
-    expect(wrapper.findComponent(MainContentCardComponent).exists()).to.be.true;
+    expect(wrapper.findComponent(MainContentCardComponent).exists()).toBe(true);
   });
 
   it('does not render MainContentCardComponent when animeContent is not available', () => {
     state.animeContent = null;
     const wrapper = shallowMount(App, { store, localVue });
-    expect(wrapper.findComponent(MainContentCardComponent).exists()).to.be.false;
+    expect(wrapper.findComponent(MainContentCardComponent).exists()).toBe(false);
   });
 
   it('renders ExpandedViewComponent when animeContent is available', () => {
     const wrapper = shallowMount(App, { store, localVue });
-    expect(wrapper.findComponent(ExpandedViewComponent).exists()).to.be.true;
+    expect(wrapper.findComponent(ExpandedViewComponent).exists()).toBe(true);
   });
 
   it('expands and closes the view correctly', async () => {
     const wrapper = shallowMount(App, { store, localVue });
-    expect(wrapper.vm.isExpanded).to.be.false;
+    expect(wrapper.vm.isExpanded).toBe(false);
     wrapper.vm.expandView();
     await wrapper.vm.$nextTick();
-    expect(wrapper.vm.isExpanded).to.be.true;
+    expect(wrapper.vm.isExpanded).toBe(true);
     wrapper.vm.closeView();
     await wrapper.vm.$nextTick();
-    expect(wrapper.vm.isExpanded).to.be.false;
+    expect(wrapper.vm.isExpanded).toBe(false);
   });
 
   it('calls fetchNewContent method on component creation', () => {
     shallowMount(App, { store, localVue });
-    expect(actions.getToken).to.have.been.called;
-    expect(actions.getAnimeContent).to.have.been.called;
+    expect(actions.getToken).toHaveBeenCalled();
+    expect(actions.getAnimeContent).toHaveBeenCalled();
   });
 });

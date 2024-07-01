@@ -25,7 +25,7 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/test-utils": "^1.3.6",
-    "babel-jest": "^29.0.0",
+    "babel-jest": "^29.7.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "jest": "^29.7.0",
@@ -51,20 +51,5 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ],
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "vue"
-    ],
-    "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
-    },
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
-    },
-    "testEnvironment": "jest-environment-jsdom"
-  }
+  ]
 }
