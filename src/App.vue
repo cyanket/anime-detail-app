@@ -13,6 +13,7 @@
       </b-row>
       <b-row>
         <b-col>
+          <b-alert v-if="error" variant="danger" show>{{ error }}</b-alert>
           <MainContentCardComponent
             v-if="animeContent"
             :animeContent="animeContent"
@@ -50,7 +51,7 @@ export default {
   },
   computed: {
     // Map animeContent state from Vuex store to local computed property
-    ...mapState(['animeContent']),
+    ...mapState(['animeContent', 'error']),
     // Computed property to format the current date
     currentDate() {
       const date = new Date();
