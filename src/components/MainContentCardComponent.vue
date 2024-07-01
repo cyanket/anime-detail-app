@@ -1,6 +1,7 @@
 <template>
   <b-card class="content-card">
     <b-img class="main-img" :src="animeContent.thumbNailImage" @click="handleImageClick" fluid></b-img>
+    <!-- Row containing logo, title, subtitle, and refresh button -->
     <b-row class="align-items-center mt-3 px-3">
       <b-col cols="auto">
         <b-img class="logo-img" :src="animeContent.logo"></b-img>
@@ -19,11 +20,14 @@
 
 <script>
 export default {
+  // Props received from the parent component
   props: ['animeContent'],
   methods: {
+    // Emit event to expand the view when the main image is clicked
     handleImageClick() {
       this.$emit('expand', this.animeContent);
     },
+    // Emit event to refresh the content
     handleRefreshClick() {
       this.$emit('refresh');
     }

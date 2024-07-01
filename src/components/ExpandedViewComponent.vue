@@ -6,6 +6,7 @@
         <span class="update-text">MAJOR UPDATE</span>
         <b-card-title class="anime-content-title">{{ animeContent.title }}</b-card-title>
       </div>
+      <!-- Row containing logo, title, subtitle, and refresh button -->
       <b-row class="align-items-center px-3">
         <b-col cols="auto">
           <b-img class="logo-img" :src="animeContent.logo"></b-img>
@@ -21,14 +22,17 @@
       </b-row>
       <hr class="hr-line"/>
       <div>
+        <!-- Anime content text -->
         <div class="mx-3" v-html="animeContent.text"></div>
+        <!-- Footer section with additional logo, title, subtitle, and refresh button -->
         <div class="footer-section text-center py-4">
-          <b-img class="logo-img mb-2" :src="animeContent.logo"></b-img>
+          <b-img class="footer-logo-img mb-2" :src="animeContent.logo"></b-img>
           <b-card-title class="anime-title mb-2">{{ animeContent.title }}</b-card-title>
           <b-card-text class="anime-subtitle mb-4">{{ animeContent.subTitle }}</b-card-text>
           <b-button pill class="refresh-content-btn mb-1" @click="handleRefreshClick">REFRESH</b-button>
           <b-card-text class="in-app-text">In-App Purchases</b-card-text>
         </div>
+        <!-- Share options section -->
         <div class="text-center my-5">
           <div v-if="showShareOptions" class="share-options mb-2">
             <b-button class="share-option" @click="shareOnWhatsApp">
@@ -65,20 +69,25 @@ export default {
     };
   },
   watch: {
+    // Watcher to update local state when prop changes
     isExpanded(newVal) {
       this.localIsExpanded = newVal;
     }
   },
   methods: {
+    // Method to handle modal close button click
     handleCloseClick() {
       this.localIsExpanded = false;
     },
+    // Emit close event when modal is hidden
     handleModalHidden() {
       this.$emit('close');
     },
+    // Emit refresh event to refresh content
     handleRefreshClick() {
       this.$emit('refresh');
     },
+    // Toggle the visibility of share options
     toggleShareOptions() {
       this.showShareOptions = !this.showShareOptions;
     },
@@ -170,6 +179,13 @@ export default {
   color: #ccccccef !important;
   font-weight: 700;
   border: none;
+}
+
+.footer-logo-img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 .share-story-btn {

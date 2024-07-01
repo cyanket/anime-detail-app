@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import MainPage from '../views/MainPage.vue';
+import App from '../App.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'MainPage',
-    component: MainPage
+    name: 'App',
+    component: App
   }
 ];
 

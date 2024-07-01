@@ -1,6 +1,7 @@
 <template>
   <div class="app-content py-3" id="app">
     <b-container>
+      <!-- Row for displaying the current date and labels -->
       <b-row>
         <b-col>
           <div class="current-date">{{ currentDate }}</div>
@@ -48,7 +49,9 @@ export default {
     };
   },
   computed: {
+    // Map animeContent state from Vuex store to local computed property
     ...mapState(['animeContent']),
+    // Computed property to format the current date
     currentDate() {
       const date = new Date();
       const options = { weekday: 'long', day: 'numeric', month: 'long' };
@@ -56,17 +59,22 @@ export default {
     }
   },
   methods: {
+    // Map Vuex actions to local methods
     ...mapActions(['getToken', 'getAnimeContent']),
+    // Method to fetch new content by calling the getAnimeContent action
     async fetchNewContent() {
       await this.getAnimeContent();
     },
+    // Method to expand the view by setting isExpanded to true
     expandView(content) {
       this.isExpanded = true;
     },
+    // Method to close the expanded view by setting isExpanded to false
     closeView() {
       this.isExpanded = false;
     }
   },
+  // Lifecycle hook to fetch the token and initial content when the component is created
   async created() {
     await this.getToken('sanketk092@gmail.com');
     await this.fetchNewContent();
