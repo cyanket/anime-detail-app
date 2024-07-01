@@ -158,6 +158,7 @@ export default {
 .anime-content-title {
   color: #fefefe;
   font-size: 36px;
+  text-align: left;
   position: absolute;
   top: 40px;
   left: 20px;
