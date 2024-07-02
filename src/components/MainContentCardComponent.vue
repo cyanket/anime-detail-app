@@ -1,12 +1,12 @@
 <template>
-  <b-card class="content-card">
-    <b-img class="main-img" :src="animeContent.thumbNailImage" @click="handleImageClick" fluid></b-img>
+  <b-card class="content-card pointer">
+    <b-img class="main-img" :src="animeContent.thumbNailImage" @click="openContent" fluid></b-img>
     <!-- Row containing logo, title, subtitle, and refresh button -->
     <b-row class="align-items-center mt-3 px-3">
-      <b-col cols="auto">
+      <b-col @click="openContent" cols="auto">
         <b-img class="logo-img" :src="animeContent.logo"></b-img>
       </b-col>
-      <b-col>
+      <b-col @click="openContent">
         <b-card-title>{{ animeContent.title }}</b-card-title>
         <b-card-text>{{ animeContent.subTitle }}</b-card-text>
       </b-col>
@@ -24,7 +24,7 @@ export default {
   props: ['animeContent'],
   methods: {
     // Emit event to expand the view when the main image is clicked
-    handleImageClick() {
+    openContent() {
       this.$emit('expand', this.animeContent);
     },
     // Emit event to refresh the content
